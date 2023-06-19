@@ -2,7 +2,7 @@
 
 ## Class Diagram
 
-![Activity Diagram](Documentation\Class_Diagram.svg)
+![Class Diagram](Documentation\Class_Diagram.svg)
 
 link: https://lucid.app/documents/embedded/685b0fd3-012c-4ea6-9e92-f7fae120cae1
 
