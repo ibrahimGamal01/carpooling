@@ -2,6 +2,8 @@
 
 ## Activity Diagram
 
-<div style="width: 640px; height: 480px; margin: 10px; position: relative;">
-  <iframe allowfullscreen frameborder="0" style="width: 640px; height: 480px" src="https://lucid.app/documents/embedded/612ab06c-b2ce-42f6-a908-c0d885258926" id="FkI8LlPxmaFf"></iframe>
-</div>
+## Activity Diagram
+
+![Activity Diagram](Activity_Diagram.svg)
+
+link: https://lucid.app/documents/embedded/612ab06c-b2ce-42f6-a908-c0d885258926#
