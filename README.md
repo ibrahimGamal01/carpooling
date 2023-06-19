@@ -2,36 +2,7 @@
 
 ## Activity Diagram
 
-```plantuml
-@startuml ActivityDiagramCarpooling
-start
+<div style="width: 640px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://lucid.app/documents/embedded/612ab06c-b2ce-42f6-a908-c0d885258926" id="FkI8LlPxmaFf"></iframe></div>
 
-:Login;
-:Is user a driver or a rider?;
-if (Driver) then (True)
-  :Create a ride offering;
-  :Set ride details (date, time, pickup location, etc.);
-  :Publish the ride offering within the organization;
-  :Wait for riders to join;
-  :Are there any issues or conflicts?;;
-  if (Yes) then (True)
-    :Resolve the issue;
-  endif
-  :Start the ride;
-  :End the ride;
-  :Provide ride feedback;
-  stop
-else (Rider)
-  :Search for available rides within the organization;
-  :Select desired ride(s);
-  :Reserve seat(s);
-  :Are there any issues or conflicts?;;
-  if (Yes) then (True)
-    :Resolve the issue;
-  endif
-  :Join the ride;
-  :Provide ride feedback;
-  stop
-endif
 
-@enduml
+<!-- <iframe width="100%" height="400" src="https://lucid.app/documents/view/612ab06c-b2ce-42f6-a908-c0d885258926" frameborder="0"></iframe> -->
