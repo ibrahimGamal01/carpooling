@@ -166,7 +166,39 @@
           <label for="dropoff">Drop-off Location</label>
           <input type="text" id="dropoff" placeholder="Enter drop-off location">
 
-          <button type="submit">Find Rides</button>
+          <script>
+            var globalVars = {sheetData: "uninitialised",
+              readerModule: "uninitialised",
+              liveFunc: "uninitialised"};
+          </script>
+
+          <script type="module">
+            import GSheetReader from 'https://cdn.skypack.dev/g-sheets-api';
+            const options = {
+              apiKey: 'API_KEY', // replace with actual API_KEY in secrets.json
+              sheetId: 'SHEET_ID', // replace with actual SHEET_ID in secrets.json
+              returnAllResults: true
+            }
+
+            GSheetReader(options, (results) => {
+                globalVars.sheetData = results;
+                console.log(results);
+              }, (error) => {
+                // OPTIONAL: handle errors here
+                console.log(error)
+              }
+            )
+          </script>
+
+          <script>
+            function readSheet() {
+              let inputText = document.getElementById("pickup").value;
+              console.log("input text is: " + inputText);
+              console.log(globalVars.sheetData);
+            }
+          </script>
+
+          <button type="button" onclick="readSheet()">Find Rides</button>
         </form>
       </div>
     </div>
