@@ -168,37 +168,42 @@
 
           <script>
             var globalVars = {sheetData: "uninitialised",
-              readerModule: "uninitialised",
-              liveFunc: "uninitialised"};
+              secrets: "uninitialised",
+            };
           </script>
+
+          <script src="secrets.js"> // defining JSON object with API_KEY and SHEET_ID </script>
 
           <script type="module">
             import GSheetReader from 'https://cdn.skypack.dev/g-sheets-api';
-            const options = {
-              apiKey: 'API_KEY', // replace with actual API_KEY in secrets.json
-              sheetId: 'SHEET_ID', // replace with actual SHEET_ID in secrets.json
-              returnAllResults: true
-            }
-
-            GSheetReader(options, (results) => {
-                globalVars.sheetData = results;
-                console.log(results);
-              }, (error) => {
-                // OPTIONAL: handle errors here
-                console.log(error)
+            window.readLiveData = function readLiveData() {
+              const options = {
+                apiKey: globalVars.secrets.API_KEY,
+                sheetId: globalVars.secrets.SHEET_ID,
+                returnAllResults: true
               }
-            )
+
+              GSheetReader(options, (results) => {
+                  globalVars.sheetData = results; // not working
+                  console.log(results); // prints the result from the previous button click
+                }, (error) => {
+                  // OPTIONAL: handle errors here
+                  console.log(error)
+                }
+              )
+            }
           </script>
 
           <script>
-            function readSheet() {
+            function onButtonClick() {
               let inputText = document.getElementById("pickup").value;
               console.log("input text is: " + inputText);
-              console.log(globalVars.sheetData);
+              readLiveData();
+              console.log(globalVars.sheetData); // not working
             }
           </script>
 
-          <button type="button" onclick="readSheet()">Find Rides</button>
+          <button type="button" onclick="onButtonClick()">Find Rides</button>
         </form>
       </div>
     </div>
