@@ -167,7 +167,7 @@
           <input type="text" id="dropoff" placeholder="Enter drop-off location">
 
           <script>
-            var globalVars = {sheetData: "uninitialised",
+            var globalVars = {
               secrets: "uninitialised",
             };
           </script>
@@ -184,11 +184,12 @@
               }
 
               GSheetReader(options, (results) => {
-                  globalVars.sheetData = results; // not working
-                  console.log(results); // prints the result from the previous button click
+                  // async function, will execute when results promise is resolved
+                  // do something with results once available
+                  console.log(results);
                 }, (error) => {
                   // OPTIONAL: handle errors here
-                  console.log(error)
+                  console.log(error);
                 }
               )
             }
@@ -196,10 +197,12 @@
 
           <script>
             function onButtonClick() {
+              // get text field data and use
               let inputText = document.getElementById("pickup").value;
               console.log("input text is: " + inputText);
-              readLiveData();
-              console.log(globalVars.sheetData); // not working
+              
+              // read data from spreadsheet and use
+              readLiveData(); // deals with JS Promise, not synchronous
             }
           </script>
 
