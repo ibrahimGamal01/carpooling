@@ -42,6 +42,7 @@
           
           <button type="submit">Find Rides</button>
         </form>
+        <ul id="ride-list"></ul>
       </div>      
     </div>
     <div class="main-content">
@@ -73,6 +74,47 @@
         L.marker(result.center).addTo(map).bindPopup(result.name || result.properties.formatted).openPopup();
       })
       .addTo(map);
+  </script>
+  <script>
+    // Function to fetch and display rides matching the passenger's direction
+    function fetchRides() {
+      const pickup = document.getElementById('pickup').value;
+      const dropoff = document.getElementById('dropoff').value;
+  
+      // Send a request to the server to fetch matching rides
+      fetch('php/fetch_rides.php', {
+        method: 'POST',
+        body: JSON.stringify({ pickup, dropoff }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          // Display the matching rides on the page
+          const rideList = document.getElementById('ride-list');
+          rideList.innerHTML = '';
+  
+          if (data.length > 0) {
+            data.forEach(ride => {
+              const listItem = document.createElement('li');
+              listItem.textContent = `Driver: ${ride.driver}, Seats: ${ride.seats}, Pickup: ${ride.pickup}, Dropoff: ${ride.dropoff}`;
+              rideList.appendChild(listItem);
+            });
+          } else {
+            const listItem = document.createElement('li');
+            listItem.textContent = 'No matching rides found.';
+            rideList.appendChild(listItem);
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+  
+    // Attach an event listener to the form submit button
+    const form = document.querySelector('form');
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      fetchRides();
+    });
   </script>
 </body>
 

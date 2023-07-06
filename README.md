@@ -34,3 +34,21 @@ The file structure of this project is organized as follows:
         - `favicon.ico`: Icon file for web browsers.
         - `favicon-16x16.png`: Icon file for web browsers.
         - `favicon-32x32.png`: Icon file for web browsers.
+
+## Setting Up the Website
+
+To get started with the website, follow these simple steps:
+
+1. Download and install `XAMPP` from https://www.apachefriends.org/download.html
+
+2. Start the servers.
+
+3. Run MySQL Admin panel.
+
+4. Create a new database and import the `database.sql` file.
+
+5. Move the `php` file to `C:\xampp\htdocs` on Windows or `/Applications/XAMPP/htdocs` on macOS.
+
+6. Rename the `php` file to `carpooling` for better organization.
+
+7. Access the backend by visiting http://localhost/carpooling/php_file_name in your web browser.
