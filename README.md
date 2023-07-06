@@ -1,8 +1,8 @@
 # Carpooling
 
-## Class Diagram
+## ER Diagram
 
-![Class Diagram](Documentation/Class_Diagram.svg)
+![ERD](Documentation/ER_Diagram.svg)
 
 link: [Class Diagram Lucidchart](https://lucid.app/documents/embedded/685b0fd3-012c-4ea6-9e92-f7fae120cae1)
 
