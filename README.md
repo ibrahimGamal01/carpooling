@@ -19,6 +19,7 @@ The file structure of this project is organized as follows:
 
 - `passenger.html`: HTML file for the passenger interface.
 - `driver.html`: HTML file for the driver interface.
+- `styles.css`: CSS file for the basic interfcaes.
 - `database.sql`: SQL script for creating the database schema.
 - `php/`: Directory containing PHP scripts used for server-side processing.
     - `create_ride.php`: PHP script for creating a new ride.
@@ -33,5 +34,3 @@ The file structure of this project is organized as follows:
         - `favicon.ico`: Icon file for web browsers.
         - `favicon-16x16.png`: Icon file for web browsers.
         - `favicon-32x32.png`: Icon file for web browsers.
-
-This file structure is designed to provide a clear separation between different components of the project, making it easier to maintain and update the codebase. The HTML files are stored in the root directory, while the PHP scripts are stored in a separate directory for server-side processing. The `src/` directory contains static assets such as images and icons that are used throughout the project. The `database.sql` file contains the SQL script for creating the database schema.
