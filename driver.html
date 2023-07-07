@@ -9,20 +9,19 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
 
   <!-- FAVICON -->
-    <link rel="icon" type="image/png" href="src/favicon/android-chrome-192x192.png" sizes="192x192">
-    <link rel="icon" type="image/png" href="src/favicon/android-chrome-512x512.png" sizes="512x512">
-    <link rel="apple-touch-icon" href="src/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/x-icon" href="src/favicon/favicon.ico">
-    <link rel="icon" type="image/png" href="src/favicon/favicon-16x16.png" sizes="16x16">
-    <link rel="icon" type="image/png" href="src/favicon/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="src/favicon/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="src/favicon/android-chrome-512x512.png" sizes="512x512">
+  <link rel="apple-touch-icon" href="src/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/x-icon" href="src/favicon/favicon.ico">
+  <link rel="icon" type="image/png" href="src/favicon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="src/favicon/favicon-32x32.png" sizes="32x32">
 
   <link rel="stylesheet" type="text/css" href="styles.css">
   <style>
     .sidebar input[type="number"] {
-       -moz-appearance: textfield;
-       appearance: textfield;
+      -moz-appearance: textfield;
+      appearance: textfield;
     }
-
 
     .sidebar input::-webkit-outer-spin-button,
     .sidebar input::-webkit-inner-spin-button {
@@ -43,15 +42,15 @@
     <div class="sidebar-container">
       <div class="sidebar">
         <h2>Create a Ride</h2>
-        <form>
+        <form id="create-ride-form" action="php/create_ride.php" method="POST">
           <label for="pickup">Pickup Location</label>
-          <input type="text" id="pickup" placeholder="Enter pickup location">
+          <input type="text" id="pickup" name="pickup" placeholder="Enter pickup location">
 
           <label for="dropoff">Drop-off Location</label>
-          <input type="text" id="dropoff" placeholder="Enter drop-off location">
+          <input type="text" id="dropoff" name="dropoff" placeholder="Enter drop-off location">
 
           <label for="seats">Available Seats</label>
-          <input type="number" id="seats" placeholder="Enter available seats" min="1">
+          <input type="number" id="seats" name="seats" placeholder="Enter available seats" min="1">
 
           <button type="submit">Create Ride</button>
         </form>
@@ -62,7 +61,6 @@
       <div id="passenger-list"></div>
       <div id="map" class="map-container"></div>
     </div>
-    
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
   <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>

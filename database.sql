@@ -51,3 +51,5 @@ CREATE TABLE `bookings` (
   FOREIGN KEY (`ride_id`) REFERENCES `rides`(`ride_id`), -- Foreign key referencing the ride in the rides table
   FOREIGN KEY (`passenger_id`) REFERENCES `users`(`id`) -- Foreign key referencing the passenger in the users table
 );
+
+ALTER TABLE rides ADD COLUMN dropoff_location VARCHAR(100) NOT NULL;

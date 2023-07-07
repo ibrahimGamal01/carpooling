@@ -22,9 +22,11 @@ The file structure of this project is organized as follows:
 - `styles.css`: CSS file for the basic interfcaes.
 - `database.sql`: SQL script for creating the database schema.
 - `php/`: Directory containing PHP scripts used for server-side processing.
-    - `create_ride.php`: PHP script for creating a new ride.
-    - `join_ride.php`: PHP script for joining an existing ride.
-    - `database.php`: PHP script for connecting to the database.
+    - `test_connection.php`: PHP script for testing the connection.
+    - `create_ride.php`: 
+    - `fetch_passengers.php`: 
+    - `fetch_rides.php`: 
+    - `start_ride.php`: 
 - `src/`: Directory containing static assets such as images and icons.
     - `logo.png`: Image file for the project logo.
     - `favicon/`: Directory containing various sizes of the favicon icon.

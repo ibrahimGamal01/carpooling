@@ -1,27 +1,37 @@
 <?php
-// Read the JSON data from the request body
-$data = json_decode(file_get_contents('php://input'), true);
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "carpooling"; 
 
-$pickup = $data['pickup'];
-$dropoff = $data['dropoff'];
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-// Perform the necessary database query to fetch matching rides
-// You would need to replace the database query with your specific implementation
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-// Example implementation using PDO:
-// Assuming you have already established a database connection using `database.php` script
+// Retrieve pickup and drop-off locations from the request
+$requestData = json_decode(file_get_contents("php://input"), true);
+$pickup = $requestData['pickup'];
+$dropoff = $requestData['dropoff'];
 
-// Prepare the query
-$query = $db->prepare("SELECT * FROM rides WHERE pickup = :pickup AND dropoff = :dropoff");
-$query->bindParam(':pickup', $pickup);
-$query->bindParam(':dropoff', $dropoff);
+// Prepare and execute the SQL query to fetch matching rides
+$stmt = $conn->prepare("SELECT * FROM rides WHERE pickup_location = ? AND status = 'upcoming'");
+$stmt->bind_param("s", $pickup);
+$stmt->execute();
+$result = $stmt->get_result();
 
-// Execute the query
-$query->execute();
+// Fetch the rides and store them in an array
+$rides = array();
+while ($row = $result->fetch_assoc()) {
+    $rides[] = $row;
+}
 
-// Fetch the results
-$rides = $query->fetchAll(PDO::FETCH_ASSOC);
+// Close the database connection
+$stmt->close();
+$conn->close();
 
-// Send the rides data as JSON response
-header('Content-Type: application/json');
+// Return the rides as JSON response
 echo json_encode($rides);
+?>
