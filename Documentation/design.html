@@ -11,7 +11,7 @@
     padding: 0;
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
-    background-image: url('src/logo.png');
+    background-image: url('../src/logo.png');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -74,6 +74,15 @@
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     height: 100%;
+    position: relative;
+  }
+
+  .car-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px; 
+  width: 33px; 
+  height: 33px;
   }
     
     .sidebar {
@@ -135,7 +144,7 @@
 <body>
   <header>
     <div class="logo-container">
-      <img src="logo.png" alt="Logo" class="logo">
+      <img src="../src/logo.png" alt="Logo" class="logo">
     </div>
     <h1>Carpooling UNFCCCC</h1>
   </header>
@@ -158,8 +167,10 @@
       </div>
     </div>
     <div class="main-content">
-      
+      <div id="map"></div>
+      <img src="../src/car_icon.svg" alt="Car Icon" class="car-icon">
     </div>
+    
   </div>
   <script>
     
