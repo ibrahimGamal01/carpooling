@@ -20,16 +20,17 @@ CREATE TABLE `cars` (
   FOREIGN KEY (`driver_id`) REFERENCES `users`(`id`) -- Foreign key referencing the driver in the users table
 );
 
--- Table structure for table `rides`
 CREATE TABLE `rides` (
-  `ride_id` INT PRIMARY KEY AUTO_INCREMENT, -- Ride ID
-  `driver_id` INT NOT NULL, -- ID of the ride's driver (linked to users table)
-  `date` DATE NOT NULL, -- Ride date
-  `time` TIME NOT NULL, -- Ride time
-  `pickup_location` VARCHAR(100) NOT NULL, -- Pickup location
-  `available_seats` INT NOT NULL, -- Number of available seats in the ride
-  `status` ENUM('upcoming', 'in progress', 'completed', 'canceled') NOT NULL, -- Ride status
-  FOREIGN KEY (`driver_id`) REFERENCES `users`(`id`) -- Foreign key referencing the driver in the users table
+  `ride_id` INT AUTO_INCREMENT PRIMARY KEY,
+  `driver_id` INT NOT NULL,
+  `pickup_location` VARCHAR(255) NOT NULL,
+  `dropoff_location` VARCHAR(255) NOT NULL,
+  `pickup_latitude` DECIMAL(10, 8),
+  `pickup_longitude` DECIMAL(11, 8),
+  `dropoff_latitude` DECIMAL(10, 8),
+  `dropoff_longitude` DECIMAL(11, 8),
+  `available_seats` INT NOT NULL,
+  `status` ENUM('upcoming', 'in progress', 'completed', 'canceled') NOT NULL
 );
 
 -- Table structure for table `ride_passengers`
@@ -51,8 +52,6 @@ CREATE TABLE `bookings` (
   FOREIGN KEY (`ride_id`) REFERENCES `rides`(`ride_id`), -- Foreign key referencing the ride in the rides table
   FOREIGN KEY (`passenger_id`) REFERENCES `users`(`id`) -- Foreign key referencing the passenger in the users table
 );
-
-ALTER TABLE rides ADD COLUMN dropoff_location VARCHAR(100) NOT NULL;
 
 ALTER TABLE `rides`
 MODIFY COLUMN `date` DATE NOT NULL DEFAULT CURRENT_DATE();

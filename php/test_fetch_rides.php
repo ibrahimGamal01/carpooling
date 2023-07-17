@@ -34,11 +34,24 @@ function testFetchRides()
     // Insert test data into the rides table
     $driverId = 1; // Assuming the driver's ID is 1
 
+    // Test Case 1: Same locations for pickup and drop-off
+    $pickup1 = 'Bonn Central Station, Bonn, Germany';
+    $dropoff1 = 'Bonn Central Station, Bonn, Germany';
+    insertRide($driverId, $pickup1, $dropoff1);
+
+    // Test Case 2: Same direction of drop-off locations
+    $pickup2 = 'Bonn Central Station, Bonn, Germany';
+    $dropoff2 = 'Beethoven House, Bonn, Germany';
+    insertRide($driverId, $pickup2, $dropoff2);
+
+    // Test Case 3: Same direction (passing by) pickup location
+    $pickup3 = 'Bonn University, Bonn, Germany';
+    $dropoff3 = 'Bonn Central Station, Bonn, Germany';
+    insertRide($driverId, $pickup3, $dropoff3);
+
     foreach ($testCases as $testCase) {
         $pickup = $testCase['pickup'];
         $dropoff = $testCase['dropoff'];
-
-        insertRide($driverId, $pickup, $dropoff);
 
         $requestData = array(
             'pickup' => $pickup,
@@ -48,7 +61,7 @@ function testFetchRides()
         $jsonData = json_encode($requestData);
 
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, "http://localhost/carpooling/php/fetch_rides.php");
+        curl_setopt($ch, CURLOPT_URL, "http://localhost/php/fetch_rides.php");
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -72,12 +85,13 @@ function testFetchRides()
                 echo "Drop-off Location: " . $ride['dropoff_location'] . "\n";
                 echo "Available Seats: " . $ride['available_seats'] . "\n";
                 echo "Status: " . $ride['status'] . "\n";
-                echo "---------------------------\n";
+                echo "\n";
             }
         } else {
             echo "No matching rides found.\n";
-            echo "---------------------------\n";
         }
+
+        echo "---------------------------\n";
     }
 }
 
