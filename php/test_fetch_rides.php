@@ -11,26 +11,23 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-/**
- * Runs test cases to fetch and display matching rides.
- */
 function testFetchRides()
 {
     $testCases = array(
         array(
             'test' => 'Same locations for pickup and drop-off',
-            'pickup' => 'Bonn Central Station, Bonn',
-            'dropoff' => 'Bonn Central Station, Bonn'
+            'pickup' => 'Bonn Central Station, Bonn, Germany',
+            'dropoff' => 'Bonn Central Station, Bonn, Germany'
         ),
         array(
             'test' => 'Same direction of drop-off locations',
-            'pickup' => 'Bonn Central Station, Bonn',
-            'dropoff' => 'Beethoven House, Bonn'
+            'pickup' => 'Bonn Central Station, Bonn, Germany',
+            'dropoff' => 'Beethoven House, Bonn, Germany'
         ),
         array(
             'test' => 'Same direction (passing by) pickup location',
-            'pickup' => 'Bonn University, Bonn',
-            'dropoff' => 'Bonn Central Station, Bonn'
+            'pickup' => 'Bonn University, Bonn, Germany',
+            'dropoff' => 'Bonn Central Station, Bonn, Germany'
         )
     );
 
@@ -38,18 +35,18 @@ function testFetchRides()
     $driverId = 1; // Assuming the driver's ID is 1
 
     // Test Case 1: Same locations for pickup and drop-off
-    $pickup1 = 'Bonn Central Station, Bonn';
-    $dropoff1 = 'Bonn Central Station, Bonn';
+    $pickup1 = 'Bonn Central Station, Bonn, Germany';
+    $dropoff1 = 'Bonn Central Station, Bonn, Germany';
     insertRide($driverId, $pickup1, $dropoff1);
 
     // Test Case 2: Same direction of drop-off locations
-    $pickup2 = 'Bonn Central Station, Bonn';
-    $dropoff2 = 'Beethoven House, Bonn';
+    $pickup2 = 'Bonn Central Station, Bonn, Germany';
+    $dropoff2 = 'Beethoven House, Bonn, Germany';
     insertRide($driverId, $pickup2, $dropoff2);
 
     // Test Case 3: Same direction (passing by) pickup location
-    $pickup3 = 'Bonn University, Bonn';
-    $dropoff3 = 'Bonn Central Station, Bonn';
+    $pickup3 = 'Bonn University, Bonn, Germany';
+    $dropoff3 = 'Bonn Central Station, Bonn, Germany';
     insertRide($driverId, $pickup3, $dropoff3);
 
     foreach ($testCases as $testCase) {
@@ -98,13 +95,6 @@ function testFetchRides()
     }
 }
 
-/**
- * Inserts a ride into the rides table.
- *
- * @param int $driverId The ID of the ride's driver.
- * @param string $pickup The pickup location.
- * @param string $dropoff The drop-off location.
- */
 function insertRide($driverId, $pickup, $dropoff)
 {
     global $conn;

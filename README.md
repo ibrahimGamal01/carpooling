@@ -25,6 +25,8 @@ The file structure of this project is organized as follows:
     - `create_ride.php`: Creates a new ride entry in the database.
     - `fetch_passengers.php`: Retrieves the list of passengers for a specific ride.
     - `fetch_rides.php`: Retrieves matching rides based on pickup and drop-off locations.
+    - `get_ride_details.php`: Retrieves the details of a specific ride, including driver and passenger information.
+    - `join_ride.php`: 
     - `start_ride.php`: Updates the status of a ride to "in progress" or "completed".
     - `test_connection.php`: Tests the connection to the database.
     - `test_fetch_rides.php`: File containing the test code for fetching rides.
