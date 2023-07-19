@@ -53,5 +53,12 @@ CREATE TABLE `bookings` (
   FOREIGN KEY (`passenger_id`) REFERENCES `users`(`id`) -- Foreign key referencing the passenger in the users table
 );
 
+CREATE TABLE `passengers` (
+  `passenger_id` INT AUTO_INCREMENT PRIMARY KEY,
+  `ride_id` INT NOT NULL,
+  `name` VARCHAR(255) NOT NULL,
+  FOREIGN KEY (`ride_id`) REFERENCES `rides` (`ride_id`)
+);
+
 ALTER TABLE `rides`
 MODIFY COLUMN `date` DATE NOT NULL DEFAULT CURRENT_DATE();
