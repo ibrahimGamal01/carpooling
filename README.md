@@ -22,6 +22,7 @@ The file structure of this project is organized as follows:
 - `styles.css`: CSS file for the basic interfcaes.
 - `database.sql`: SQL script for creating the database schema.
 - `php/`: Directory containing PHP scripts used for server-side processing.
+    - `test_api.php`: Testing and using OpenRoute Service for matching pooling partners.
     - `create_ride.php`: Creates a new ride entry in the database.
     - `fetch_passengers.php`: Retrieves the list of passengers for a specific ride.
     - `fetch_rides.php`: Retrieves matching rides based on pickup and drop-off locations.
