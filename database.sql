@@ -59,6 +59,3 @@ CREATE TABLE `passengers` (
   `name` VARCHAR(255) NOT NULL,
   FOREIGN KEY (`ride_id`) REFERENCES `rides` (`ride_id`)
 );
-
-ALTER TABLE `rides`
-MODIFY COLUMN `date` DATE NOT NULL DEFAULT CURRENT_DATE();

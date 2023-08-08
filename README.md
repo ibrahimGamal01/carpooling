@@ -58,3 +58,9 @@ To get started with the website, follow these simple steps:
 6. Rename the `php` file to `carpooling` for better organization.
 
 7. Access the backend by visiting http://localhost/carpooling/php_file_name in your web browser.
+
+8. Create a new Database and name it `carpooling`.
+
+9. Write the SQL code from `database.sql` into the database to create the tables.
+
+10. Test The creating of the ride and Congrats, the site is working.
